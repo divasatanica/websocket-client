@@ -1,0 +1,22 @@
+{
+  "name": "websocket-client",
+  "version": "0.0.1",
+  "description": "A websocket client supports auto reconnect and custom reconnect strategy",
+  "main": "dist/websocket-client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup --config rollup.config.js"
+  },
+  "keywords": [
+    "websocket"
+  ],
+  "types": "./src/typings/index.d.ts",
+  "author": "coma",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^1.13.1",
+    "rollup-plugin-typescript2": "^0.21.1",
+    "tslib": "^1.9.3",
+    "typescript": "^3.5.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        // ...
+        "noImplicitAny": true,
+        // 添加配置
+        "baseUrl": ".",
+        "paths": {
+        "utils/*": ["../utils/*"],
+        "components/*": ["../components/*"]
+        }
+    },
+    "include": ["./src/*", "./src/**/*"],
+    "exclude": ["node_modules"]
+}
