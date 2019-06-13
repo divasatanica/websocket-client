@@ -2,10 +2,13 @@
   "name": "websocket-client",
   "version": "0.0.1",
   "description": "A websocket client supports auto reconnect and custom reconnect strategy",
-  "main": "dist/websocket-client.js",
+  "main": "dist/websocket-client.iife.js",
+  "module": "dist/websocket-client.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup --config rollup.config.js"
+    "build": "yarn buildIIFE&&yarn buildESM",
+    "buildIIFE": "rollup --config build/rollup.config.iife.js",
+    "buildESM": "rollup --config build/rollup.config.esm.js"
   },
   "keywords": [
     "websocket"
