@@ -13,6 +13,9 @@ function getEventListener(eventName) {
 
 var WebSocketClient = /** @class */ (function () {
     function WebSocketClient(config) {
+        if (!config) {
+            throw new Error("Config Missed");
+        }
         this.config = config;
         this.eventQueueMap = new Map();
         this.reconnectTimeout = config.reconnectTimeout;
