@@ -12,6 +12,9 @@ class WebSocketClient {
     reconnectTimeout: number;
 
     constructor(config: IConfig) {
+        if (!config) {
+            throw new Error("Config Missed");
+        }
         this.config = config;
         this.eventQueueMap = new Map();
         this.reconnectTimeout = config.reconnectTimeout;
