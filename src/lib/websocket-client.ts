@@ -8,7 +8,7 @@ class WebSocketClient {
 
     config: IConfig;
     eventQueueMap: Map<string, Function[]>;
-    timerID: NodeJS.Timeout;
+    timerID: number;
     socket: null | WebSocket;
     reconnectTimeout: number;
 
