@@ -2,6 +2,7 @@
     "compilerOptions": {
         // ...
         "noImplicitAny": true,
+        "lib": ["es2015", "dom"],
         // 添加配置
         "baseUrl": ".",
         "paths": {
