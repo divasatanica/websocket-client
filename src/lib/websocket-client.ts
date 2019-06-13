@@ -1,7 +1,6 @@
 
 import { getEventListener } from './util';
 import { IConfig } from '../interfaces/interfaces';
-import WebsocketClient from 'src';
 
 
 class WebSocketClient {
@@ -27,23 +26,23 @@ class WebSocketClient {
         socket.onopen = getEventListener.call(this, "open");
     }
 
-    _initReconnectHandler(socket: WebsocketClient): void {
+    _initReconnectHandler(): void {
         const config = this.config;
 
         let onReconnHandler = () => {
-            this.timerID = setTimeout(() => {
+            this.timerID = window.setTimeout(() => {
                 this.reconnect();
                 this.timerID = null;
             }, this.reconnectTimeout);
         };
 
         if (typeof config.reconnectTimeoutCalculator === "function") {
-            socket.on("close", () => {
+            this.on("close", () => {
                 onReconnHandler();
                 this.reconnectTimeout = config.reconnectTimeoutCalculator.call(this, this.reconnectTimeout);
             });
         } else {
-            socket.on("close", onReconnHandler);
+            this.on("close", onReconnHandler);
         }
     }
 
@@ -79,7 +78,7 @@ class WebSocketClient {
 
         this._initEventListener(this.socket);
         if (autoReconnect === true) {
-            this._initReconnectHandler(this);
+            this._initReconnectHandler();
         }
     }
 
@@ -89,7 +88,7 @@ class WebSocketClient {
 
     reconnect (): void {
         if (this.timerID) {
-            clearTimeout(this.timerID);
+            window.clearTimeout(this.timerID);
             this.timerID = null;
         }
         this.open();
